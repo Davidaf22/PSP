@@ -56,16 +56,20 @@ class parteC extends Thread {
             String nombre = this.getName();
             String[] parts = nombre.split("");
             
-            if(parts[parts.length-1]=="1"){
-                interacciones1=x;
-            }
-            else if(parts[parts.length-1]=="2"){
-                interacciones2=x;
-            }
-             else if(parts[parts.length-1]=="3"){
-                interacciones3=x;
-            }
+            System.out.println("hilo numero "+parts[parts.length-1]);
             
+            if(parts[parts.length-1].equals("1")){
+                interacciones1=x;
+                System.out.println("entro en 1");
+            }
+            else if(parts[parts.length-1].equals("2")){
+                interacciones2=x;
+                System.out.println("entro en 2");
+            }
+             else if(parts[parts.length-1].equals("3")){
+                interacciones3=x;
+                System.out.println("entro en 3");
+            }
             if(interacciones1!=interacciones2||interacciones1!=interacciones3||interacciones2!=interacciones3){
                 try {
                     wait();
@@ -73,9 +77,12 @@ class parteC extends Thread {
                     Logger.getLogger(parteC.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            else{
-                this.notify();
-            }
+            else if(interacciones1==interacciones2&&interacciones1==interacciones3&&interacciones2==interacciones3){
+                Object lock = new Object();
+                synchronized (lock) {
+                lock.notify();
+}
+            }         
         }       
     }
     
