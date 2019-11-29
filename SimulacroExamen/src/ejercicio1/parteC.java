@@ -17,9 +17,9 @@ class parteC extends Thread {
         
         if(contador==0){
             contador=1;
-            parteA hiloSecundario1 = new parteA("hiloSecundario1");
-            parteA hiloSecundario2 = new parteA("hiloSecundario2");
-            parteA hiloSecundario3 = new parteA("hiloSecundario3");
+            parteC hiloSecundario1 = new parteC("hiloSecundario1");
+            parteC hiloSecundario2 = new parteC("hiloSecundario2");
+            parteC hiloSecundario3 = new parteC("hiloSecundario3");
             
             hiloSecundario1.start();
             hiloSecundario2.start();
@@ -55,7 +55,7 @@ class parteC extends Thread {
     }
     
     public static void main(String[] args) throws InterruptedException {
-        parteA hiloPrincipal = new parteA("hiloPrincipal");
+        parteC hiloPrincipal = new parteC("hiloPrincipal");
         hiloPrincipal.start();
     }
 }
